@@ -49,7 +49,7 @@ export default function TestPage() {
         <h1 className="text-2xl font-bold mb-4">测评结果</h1>
         <p>用时：{result.duration} 秒</p>
         <ul className="mt-4 space-y-2">
-          {Object.entries(result.scores).map(([dim, val]) => (
+          {Object.entries(result.scores as { [key: string]: number }).map(([dim, val]) => (
             <li key={dim} className="border-b pb-1">
               {dim}：{val.toFixed(1)} 分（{val < 4 ? '低风险' : val < 7 ? '中风险' : '高风险'}）
             </li>
