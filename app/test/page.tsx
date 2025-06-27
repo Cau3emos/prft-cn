@@ -5,13 +5,20 @@ import {
   Radar, ResponsiveContainer
 } from 'recharts';
 
-import { useState, useEffect } from "react";
+
+import { useEffect, useRef } from "react";
+useState, useEffect } from "react";
 import questions from "./questions.json";
 
 const DIMENSIONS = [...new Set(questions.map(q => q.dimension))];
 
 export default function TestPage() {
+  
   const [answers, setAnswers] = useState({});
+  const [answerLog, setAnswerLog] = useState<{ id: number, value: string, duration: number }[]>([]);
+  const currentQuestionTime = useRef(Date.now());
+  const startTimeRef = useRef(Date.now());
+        
   const [step, setStep] = useState(0);
   const [startTime, setStartTime] = useState(null);
   const [result, setResult] = useState(null);
