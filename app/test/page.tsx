@@ -1,4 +1,10 @@
 "use client";
+
+import {
+  RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
+  Radar, ResponsiveContainer
+} from 'recharts';
+
 import { useState, useEffect } from "react";
 import questions from "./questions.json";
 
@@ -55,6 +61,22 @@ export default function TestPage() {
             </li>
           ))}
         </ul>
+        <div className="h-[500px] w-full my-6">
+          <ResponsiveContainer width="100%" height="100%">
+            <RadarChart cx="50%" cy="50%" outerRadius="80%" data={
+              Object.entries(result.scores as { [key: string]: number }).map(([dim, val]) => ({
+                dimension: dim,
+                score: parseFloat(val.toFixed(1))
+              }))
+            }>
+              <PolarGrid />
+              <PolarAngleAxis dataKey="dimension" />
+              <PolarRadiusAxis angle={30} domain={[0, 10]} />
+              <Radar name="分数" dataKey="score" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+            </RadarChart>
+          </ResponsiveContainer>
+        </div>
+
       </div>
     );
   }
