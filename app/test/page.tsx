@@ -6,8 +6,8 @@ import {
 } from 'recharts';
 
 
-import { useEffect, useRef } from "react";
-useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
 import questions from "./questions.json";
 
 const DIMENSIONS = [...new Set(questions.map(q => q.dimension))];
