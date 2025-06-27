@@ -26,7 +26,7 @@ export default function TestPage() {
   };
 
   const computeResults = () => {
-    const scores = {};
+    const scores: { [key: string]: number[] } = {};
     questions.forEach(q => {
       if (!scores[q.dimension]) scores[q.dimension] = [];
       scores[q.dimension].push(answers[q.id] || 0);
